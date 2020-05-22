@@ -3,7 +3,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="bean.Employee"%>
-<%@ page import="bean.Gender"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	List<Employee> employees = new ArrayList<Employee>();
