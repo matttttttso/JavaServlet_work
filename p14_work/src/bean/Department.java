@@ -3,6 +3,7 @@ package bean;
 import java.io.Serializable;
 
 public class Department implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int deptID;
 	private String deptName;
 

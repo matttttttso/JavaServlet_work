@@ -3,6 +3,7 @@ package bean;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int employeeID; //社員番号
 	private String lastName; //姓
 	private String firstName; //名
