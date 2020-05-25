@@ -1,84 +1,65 @@
 package bean;
 
+import java.awt.Image;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	private int employeeID; //社員番号
-	private String lastName; //姓
-	private String firstName; //名
+	private String name; //名前
 	private int age; //年齢
 	private Gender gender; //性別
+	private Image image;
+	private String zipcode;
 	private Prefecture pref; //都道府県
+	private String address;
+	private String dept;
+	private String dateEntering;
+	private String dateRetired;
 
 	public Employee() {
 	}
 
-	public Employee(int employeeID, String lastName, String firstName, int age, Gender gender) {
-		this.employeeID = employeeID;
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.age = age;
-		this.gender = gender;
-	}
-	public Employee(int employeeID, String lastName, String firstName, int age, Gender gender, Prefecture pref) {
-		this.employeeID = employeeID;
-		this.lastName = lastName;
-		this.firstName = firstName;
+	public Employee(int id, String name, int age, Gender gender, Prefecture pref, String dept) {
+		this.employeeID = id;
+		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.pref = pref;
+		this.dept = dept;
 	}
 
-	public String getFullName() {
-		return this.lastName + " " + this.firstName;
-	}
+	public int getEmployeeID() {return employeeID;}
+	public void setEmployeeID(int employeeID) {this.employeeID = employeeID;}
 
-	public int getEmployeeID() {
-		return employeeID;
-	}
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
 
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
-	}
+	public int getAge() {return age;}
+	public void setAge(int age) {this.age = age;}
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public Gender getGender() {return gender;}
+	public void setGender(Gender gender) {this.gender = gender;}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	public Image getImage() {return image;}
+	public void setImage(Image image) {this.image = image;}
 
-	public String getLastName() {
-		return lastName;
-	}
+	public String getZipcode() {return zipcode;}
+	public void setZipcode(String zipcode) {this.zipcode = zipcode;}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	public Prefecture getPref() {return pref;}
+	public void setPref(Prefecture pref) {this.pref = pref;}
 
-	public int getAge() {
-		return age;
-	}
+	public String getAddress() {return address;}
+	public void setAddress(String address) {this.address = address;}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+	public String getDept() {return dept;}
+	public void setDept(String dept) {this.dept = dept;}
 
-	public Gender getGender() {
-		return gender;
-	}
+	public String getDateEntering() {return dateEntering;}
+	public void setDateEntering(String dateEntering) {this.dateEntering = dateEntering;}
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
-	public Prefecture getPref() {
-		return pref;
-	}
-
-	public void setPref(Prefecture pref) {
-		this.pref = pref;
-	}
+	public String getDateRetired() {return dateRetired;}
+	public void setDateRetired(String dateRetired) {this.dateRetired = dateRetired;}
 }
