@@ -21,11 +21,13 @@ public class EmployeeDatabaseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String action = request.getParameter("action");
 
+		String empID = request.getParameter("empID");
+		request.setAttribute("empID", empID);
+
+		String action = request.getParameter("action");
 		CommonLogic logic = null;
 		String next = "/WEB-INF/jsp/";
-
 		if (action == null) {
 			next = next + "emp_list.jsp";
 		} else {
@@ -36,6 +38,7 @@ public class EmployeeDatabaseServlet extends HttpServlet {
 				String fileName = logic.execute(request, response);
 				next = next + fileName;
 			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+				request.setAttribute("errorMessage", e);
 				next = next + "error.jsp";
 			}
 		}
