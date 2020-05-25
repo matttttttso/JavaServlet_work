@@ -10,10 +10,13 @@
 </head>
 <body>
 	<h2>一覧へ（テスト）</h2>
-	<a href="./EmployeeDatabase?action=action.EmployeeListLogic">一覧</a>
 	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="action.EmployeeListLogic" />
-		<input type="submit" value="一覧">
+		<input type="submit" value="社員一覧">
+	</form>
+		<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="action" value="action.DeptListLogic" />
+		<input type="submit" value="部署一覧">
 	</form>
 	<button onclick="history.back()">キャンセル</button>
 </body>
