@@ -18,6 +18,7 @@
 		<input type="hidden" name="action" value="action.DeptListLogic" />
 		<input type="submit" value="部署一覧">
 	</form>
+	<br>
 	<button onclick="history.back()">キャンセル</button>
 </body>
 </html>
