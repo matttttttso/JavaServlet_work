@@ -30,6 +30,8 @@ public class EmployeeDatabaseServlet extends HttpServlet {
 		String next = "/WEB-INF/jsp/";
 		if (action == null) {
 			next = next + "emp_list.jsp";
+		} else if(action.equals("top")) {
+			next = "index.jsp";
 		} else if(action.equals("search")) {
 			next = next + "emp_search.jsp";
 		} else {
