@@ -8,18 +8,19 @@
 </head>
 <body>
 	<h2>条件を指定して社員情報を検索します。</h2>
-	<form action="#" method="post">
+	<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="action" value="action.EmployeeSearchLogic">
 		<p>
-			所属部署： <select name="department">
-				<option value="">未指定</option>
-				<option value="部署1">部署１</option>
-				<option value="部署2">部署２</option>
-				<option value="部署３">部署３</option>
+			所属部署： <select name="searchDept">
+				<option value="unselected">未指定</option>
+				<option value="営業部">営業部</option>
+				<option value="総務部">総務部</option>
+				<option value="運動部">運動部</option>
 				<option value="その他">その他</option>
 			</select>
 		</p>
 		<p>
-			社員ID：<input type="text" name="employeeID">
+			社員ID：<input type="text" name="searchEmpID">
 		</p>
 		<p>
 			名前に含む文字：<input type="text" name="searchName">

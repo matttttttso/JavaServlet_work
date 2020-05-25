@@ -20,7 +20,7 @@
 		<c:forEach var="employee" items="${ empList }">
 			<tr>
 				<td><c:out value="${ employee.employeeID }" /></td>
-				<td><c:out value="${ employee.fullName }" /></td>
+				<td><c:out value="${ employee.name }" /></td>
 				<td>
 					<form action="./EmployeeDatabase" method="post">
 						<input type="hidden" name="action" value="action.EmployeeEditLogic" />
@@ -40,7 +40,8 @@
 	<form action="#" method="post">
 		<input type="submit" value="新規追加">
 	</form>
-	<form action="#" method="post">
+	<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="action" value="search" />
 		<input type="submit" value="検索...">
 	</form>
 	<form action="#" method="post">
