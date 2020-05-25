@@ -6,12 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>部署データの作成・修正</title>
+<title>部署データの修正</title>
 </head>
 <body>
-	<h2>部署データを作成・修正します</h2>
-	<form action="#" method="post">
-		<p>名前：<input type="text" name="name"></p>
+	<h2>部署データを修正します</h2>
+	<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="deptID" value="${ deptEdited.deptID }">
+		<p>部署名：<input type="text" name="deptName" value="${ deptEdited.deptName }"></p>
+		<input type="hidden" name="action" value="action.DeptUpdateLogic" />
 		<input type="submit" value="設定">
 	</form>
 	<button onclick="history.back()">キャンセル</button>

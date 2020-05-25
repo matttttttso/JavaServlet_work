@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,12 @@
 <title>成功</title>
 </head>
 <body>
-	<h2>データベースへの登録に成功しました。</h2>
-	<form action="#" method="post">
+
+	<c:if test="${ not empty message }">
+		<h2>${ message }</h2>
+	</c:if>
+	<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="action" value="top" />
 		<input type="submit" value="トップページへ">
 	</form>
 </body>
