@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Employee;
 import bean.Gender;
+import bean.Prefecture;
 
 public class EmployeeListLogic implements CommonLogic {
 	@Override
@@ -16,9 +17,9 @@ public class EmployeeListLogic implements CommonLogic {
 		HttpSession session = request.getSession();
 
 		List<Employee> employees = new ArrayList<Employee>();
-		Employee e1 = new Employee(1, "山田 太郎", 30, Gender.Male);
-		Employee e2 = new Employee(2, "佐藤 花子", 25, Gender.Female);
-		Employee e51 = new Employee(51, "鈴木 一朗", 46, Gender.Male);
+		Employee e1 = new Employee(1, "山田 太郎", 30, Gender.Male, Prefecture.FUKUOKA, "営業部");
+		Employee e2 = new Employee(2, "佐藤 花子", 25, Gender.Female, Prefecture.TOKYO, "総務部");
+		Employee e51 = new Employee(51, "鈴木 一朗", 46, Gender.Male, Prefecture.AICHI, "運動部");
 		employees.add(e1);
 		employees.add(e2);
 		employees.add(e51);
