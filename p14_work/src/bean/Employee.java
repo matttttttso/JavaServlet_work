@@ -14,14 +14,14 @@ public class Employee implements Serializable {
 	private String zipcode;
 	private Prefecture pref; //都道府県
 	private String address;
-	private String dept;
+	private Dept dept;
 	private String dateEntering;
 	private String dateRetired;
 
 	public Employee() {
 	}
 
-	public Employee(int id, String name, int age, Gender gender, Prefecture pref, String dept) {
+	public Employee(int id, String name, int age, Gender gender, Prefecture pref, Dept dept) {
 		this.employeeID = id;
 		this.name = name;
 		this.age = age;
@@ -54,8 +54,8 @@ public class Employee implements Serializable {
 	public String getAddress() {return address;}
 	public void setAddress(String address) {this.address = address;}
 
-	public String getDept() {return dept;}
-	public void setDept(String dept) {this.dept = dept;}
+	public Dept getDept() {return dept;}
+	public void setDept(Dept dept) {this.dept = dept;}
 
 	public String getDateEntering() {return dateEntering;}
 	public void setDateEntering(String dateEntering) {this.dateEntering = dateEntering;}

@@ -28,17 +28,15 @@
 						<td><c:out value="${ employee.dept }" /></td>
 						<td>
 							<form action="./EmployeeDatabase" method="post">
-								<input type="hidden" name="action"
-									value="action.EmployeeEditLogic" /> <input type="hidden"
-									name="empID" value="${ employee.employeeID }"> <input
-									type="submit" value="編集">
+								<input type="hidden" name="action" value="action.EmployeeEditLogic" />
+								<input type="hidden" name="empID" value="${ employee.employeeID }">
+								<input type="submit" value="編集">
 							</form>
 						</td>
 						<td>
 							<form action="#" method="post">
-								<input type="hidden" name="empID"
-									value="${ employee.employeeID }"> <input type="submit"
-									value="削除">
+								<input type="hidden" name="empID" value="${ employee.employeeID }">
+								<input type="submit" value="削除">
 							</form>
 						</td>
 					</tr>
@@ -48,8 +46,8 @@
 				<input type="submit" value="新規追加">
 			</form>
 			<form action="./EmployeeDatabase" method="post">
-				<input type="hidden" name="action" value="search" /> <input
-					type="submit" value="検索...">
+				<input type="hidden" name="action" value="search" />
+				<input type="submit" value="検索...">
 			</form>
 		</c:when>
 	</c:choose>

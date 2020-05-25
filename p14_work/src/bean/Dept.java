@@ -2,14 +2,14 @@ package bean;
 
 import java.io.Serializable;
 
-public class Department implements Serializable{
+public class Dept implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int deptID;
 	private String deptName;
 
-	public Department(){}
+	public Dept(){}
 
-	public Department(int deptID, String deptName) {
+	public Dept(int deptID, String deptName) {
 		this.deptID = deptID;
 		this.deptName = deptName;
 	}

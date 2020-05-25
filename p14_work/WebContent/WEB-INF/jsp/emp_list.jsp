@@ -25,7 +25,7 @@
 					<form action="./EmployeeDatabase" method="post">
 						<input type="hidden" name="action" value="action.EmployeeEditLogic" />
 						<input type="hidden" name="empID" value="${ employee.employeeID }">
-						<input type="submit" value="編集${ employee.employeeID }">
+						<input type="submit" value="編集">
 					</form>
 				</td>
 				<td>
