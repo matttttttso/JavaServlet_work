@@ -4,16 +4,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="bean.Department"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	List<Department> depts = new ArrayList<Department>();
-	Department d1 = new Department(1, "総務部");
-	Department d2 = new Department(2, "営業部");
-	Department d3 = new Department(3, "開発部");
-	depts.add(d1);
-	depts.add(d2);
-	depts.add(d3);
-	session.setAttribute("list", depts);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +17,7 @@
 			<th>ID</th>
 			<th>部署名</th>
 		</tr>
-		<c:forEach var="dept" items="${ list }">
+		<c:forEach var="dept" items="${ deptList }">
 			<tr>
 				<td><c:out value="${ dept.deptID }" /></td>
 				<td><c:out value="${ dept.deptName }" /></td>
