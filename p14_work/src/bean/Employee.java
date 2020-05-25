@@ -14,7 +14,7 @@ public class Employee implements Serializable {
 	private String zipcode;
 	private Prefecture pref; //都道府県
 	private String address;
-	private String department;
+	private String dept;
 	private String dateEntering;
 	private String dateRetired;
 
@@ -27,7 +27,7 @@ public class Employee implements Serializable {
 		this.age = age;
 		this.gender = gender;
 		this.pref = pref;
-		this.department = dept;
+		this.dept = dept;
 	}
 
 	public int getEmployeeID() {return employeeID;}
@@ -54,8 +54,8 @@ public class Employee implements Serializable {
 	public String getAddress() {return address;}
 	public void setAddress(String address) {this.address = address;}
 
-	public String getDepartment() {return department;}
-	public void setDepartment(String department) {this.department = department;}
+	public String getDept() {return dept;}
+	public void setDept(String dept) {this.dept = dept;}
 
 	public String getDateEntering() {return dateEntering;}
 	public void setDateEntering(String dateEntering) {this.dateEntering = dateEntering;}

@@ -31,7 +31,7 @@ public class EmployeeSearchLogic implements CommonLogic {
 		for (Employee emp : empList) {
 			boolean matchedSearchDept = true;
 			if(!searchDept.equals("unselected")){
-				matchedSearchDept = emp.getDepartment().equals(searchDept);
+				matchedSearchDept = emp.getDept().equals(searchDept);
 			}
 			if (matchedSearchDept) {
 				boolean matchedEmpID = true;

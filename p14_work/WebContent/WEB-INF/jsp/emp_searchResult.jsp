@@ -13,11 +13,13 @@
 		<tr>
 			<th>ID</th>
 			<th>名前</th>
+			<th>部署</th>
 		</tr>
 		<c:forEach var="employee" items="${ searchedEmpList }">
 			<tr>
 				<td><c:out value="${ employee.employeeID }" /></td>
 				<td><c:out value="${ employee.name }" /></td>
+				<td><c:out value="${ employee.dept }" /></td>
 				<td>
 					<form action="./EmployeeDatabase" method="post">
 						<input type="hidden" name="action" value="action.EmployeeEditLogic" />
