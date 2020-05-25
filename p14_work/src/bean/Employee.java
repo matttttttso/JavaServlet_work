@@ -8,17 +8,26 @@ public class Employee implements Serializable {
 	private String lastName; //姓
 	private String firstName; //名
 	private int age; //年齢
-	private String gender; //性別
+	private Gender gender; //性別
+	private Prefecture pref; //都道府県
 
 	public Employee() {
 	}
 
-	public Employee(int employeeID, String lastName, String firstName, int age, String gender) {
+	public Employee(int employeeID, String lastName, String firstName, int age, Gender gender) {
 		this.employeeID = employeeID;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.age = age;
 		this.gender = gender;
+	}
+	public Employee(int employeeID, String lastName, String firstName, int age, Gender gender, Prefecture pref) {
+		this.employeeID = employeeID;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.age = age;
+		this.gender = gender;
+		this.pref = pref;
 	}
 
 	public String getFullName() {
@@ -57,11 +66,19 @@ public class Employee implements Serializable {
 		this.age = age;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public Prefecture getPref() {
+		return pref;
+	}
+
+	public void setPref(Prefecture pref) {
+		this.pref = pref;
 	}
 }
