@@ -22,12 +22,15 @@
 				<td><c:out value="${ employee.employeeID }" /></td>
 				<td><c:out value="${ employee.fullName }" /></td>
 				<td>
-					<form action="#" method="post">
-						<input type="submit" value="編集">
+					<form action="./EmployeeDatabase" method="post">
+						<input type="hidden" name="action" value="action.EmployeeEditLogic" />
+						<input type="hidden" name="empID" value="${ employee.employeeID }">
+						<input type="submit" value="編集${ employee.employeeID }">
 					</form>
 				</td>
 				<td>
 					<form action="#" method="post">
+						<input type="hidden" name="empID" value="${ employee.employeeID }">
 						<input type="submit" value="削除">
 					</form>
 				</td>
