@@ -5,8 +5,7 @@ import java.io.Serializable;
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int employeeID; //社員番号
-	private String lastName; //姓
-	private String firstName; //名
+	private String name; //名前
 	private int age; //年齢
 	private Gender gender; //性別
 	private Prefecture pref; //都道府県
@@ -14,24 +13,18 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public Employee(int employeeID, String lastName, String firstName, int age, Gender gender) {
+	public Employee(int employeeID, String name, int age, Gender gender) {
 		this.employeeID = employeeID;
-		this.lastName = lastName;
-		this.firstName = firstName;
+		this.name = name;
 		this.age = age;
 		this.gender = gender;
 	}
-	public Employee(int employeeID, String lastName, String firstName, int age, Gender gender, Prefecture pref) {
+	public Employee(int employeeID, String name, int age, Gender gender, Prefecture pref) {
 		this.employeeID = employeeID;
-		this.lastName = lastName;
-		this.firstName = firstName;
+		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.pref = pref;
-	}
-
-	public String getFullName() {
-		return this.lastName + " " + this.firstName;
 	}
 
 	public int getEmployeeID() {
@@ -42,20 +35,12 @@ public class Employee implements Serializable {
 		this.employeeID = employeeID;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getAge() {
