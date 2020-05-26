@@ -40,7 +40,7 @@ public class CreateEmpsCSVLogic implements CommonLogic {
 			request.setAttribute("errotMessage", "CSVファイルの作成に失敗しました。");
 			return "error.jsp";
 		}
-		request.setAttribute("message", "CSVファイルの作成に成功しました。");
+		request.setAttribute("message", "社員リストのCSVファイルをデスクトップに作成しました。");
 		return "success.jsp";
 	}
 }
