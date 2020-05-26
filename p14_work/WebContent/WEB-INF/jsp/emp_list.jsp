@@ -46,7 +46,8 @@
 		<input type="hidden" name="action" value="search" />
 		<input type="submit" value="検索...">
 	</form>
-	<form action="#" method="post">
+	<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="action" value="action.CreateEmpsCSVLogic" />
 		<input type="submit" value="SCVファイルに出力">
 	</form>
 	<br>
