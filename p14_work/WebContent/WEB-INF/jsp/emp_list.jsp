@@ -17,27 +17,29 @@
 			<th>ID</th>
 			<th>名前</th>
 		</tr>
-		<c:forEach var="employee" items="${ empList }">
+		<c:forEach var="emp" items="${ empAllList }">
 			<tr>
-				<td><c:out value="${ employee.employeeID }" /></td>
-				<td><c:out value="${ employee.name }" /></td>
+				<td><c:out value="${ emp.empID }" /></td>
+				<td><c:out value="${ emp.empName }" /></td>
 				<td>
 					<form action="./EmployeeDatabase" method="post">
-						<input type="hidden" name="action" value="action.EmployeeEditLogic" />
-						<input type="hidden" name="empID" value="${ employee.employeeID }">
+						<input type="hidden" name="action" value="action.EmpEditLogic">
+						<input type="hidden" name="empID" value="${ emp.empID }">
 						<input type="submit" value="編集">
 					</form>
 				</td>
 				<td>
-					<form action="#" method="post">
-						<input type="hidden" name="empID" value="${ employee.employeeID }">
+					<form action="./EmployeeDatabase" method="post">
+						<input type="hidden" name="action" value="action.EmpDeleteLogic">
+						<input type="hidden" name="empID" value="${ emp.empID }">
 						<input type="submit" value="削除">
 					</form>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<form action="#" method="post">
+	<form action="./EmployeeDatabase" method="post">
+		<input type="hidden" name="action" value="action.EmpNewLogic" />
 		<input type="submit" value="新規追加">
 	</form>
 	<form action="./EmployeeDatabase" method="post">
@@ -47,5 +49,7 @@
 	<form action="#" method="post">
 		<input type="submit" value="SCVファイルに出力">
 	</form>
+	<br>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>
