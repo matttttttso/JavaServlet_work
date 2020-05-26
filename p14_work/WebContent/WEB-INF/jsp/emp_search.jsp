@@ -9,7 +9,7 @@
 <body>
 	<h2>条件を指定して社員情報を検索します。</h2>
 	<form action="./EmployeeDatabase" method="post">
-		<input type="hidden" name="action" value="action.EmployeeSearchLogic">
+		<input type="hidden" name="action" value="action.EmpSearchLogic">
 		<p>
 			所属部署： <select name="searchDept">
 				<option value="unselected">未指定</option>
@@ -27,5 +27,7 @@
 		</p>
 		<input type="submit" value="検索">
 	</form>
+	<br>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>
