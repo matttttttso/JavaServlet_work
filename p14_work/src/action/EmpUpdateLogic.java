@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import dao.ImageDAO;
@@ -16,7 +15,6 @@ import dao.ImageDAO;
 public class EmpUpdateLogic implements CommonLogic {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
 		String f = request.getParameter("picture");
 		int pictID = Integer.parseInt(request.getParameter("pictID"));
 		InputStream is = null;
