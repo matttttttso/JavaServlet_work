@@ -21,6 +21,7 @@ public class EmpEditLogic implements CommonLogic {
 			if(emp.getEmpID() == empID) {
 				request.setAttribute("empEdited", emp);
 				int pictID = emp.getPictID();
+				@SuppressWarnings("unchecked")
 				List<Picture> imageAllList = (List<Picture>) session.getAttribute("imageAllList");
 				Picture picture = imageAllList.get(pictID - 1);
 				String pictureSTR = picture.getPictImage();
