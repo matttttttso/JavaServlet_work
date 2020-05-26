@@ -21,11 +21,13 @@ public class EmpEditLogic implements CommonLogic {
 			if(emp.getEmpID() == empID) {
 				request.setAttribute("empEdited", emp);
 				int pictID = emp.getPictID();
-				@SuppressWarnings("unchecked")
-				List<Picture> imageAllList = (List<Picture>) session.getAttribute("imageAllList");
-				Picture picture = imageAllList.get(pictID - 1);
-				String pictureSTR = picture.getPictImage();
-				request.setAttribute("pictureSTR", pictureSTR);
+				if(pictID != 0) {
+					@SuppressWarnings("unchecked")
+					List<Picture> imageAllList = (List<Picture>) session.getAttribute("imageAllList");
+					Picture picture = imageAllList.get(pictID - 1);
+					String pictureSTR = picture.getPictImage();
+					request.setAttribute("pictureSTR", pictureSTR);
+				}
 			}
 		}
 		return "emp_edit.jsp";

@@ -39,7 +39,6 @@ public class ImageDAO {
 				Picture sw = new Picture(pict_id, imageSTR);
 				pictureAllList.add(sw);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
