@@ -13,7 +13,6 @@
 </head>
 <body>
 	<h3>部署一覧：</h3>
-	<p>レコード数：${ fn:length(deptAllList) }</p>
 	<c:if test="${ !empty message }">
 		<p>${ message }</p>
 	</c:if>
@@ -43,9 +42,12 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
 	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="action.DeptNewLogic" />
 		<input type="submit" value="新規追加">
 	</form>
+	<br>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>

@@ -13,8 +13,8 @@ public class DeptListLogic implements CommonLogic {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
-		DeptDAO deptDao = new DeptDAO();
-		List<Dept> deptAllList = deptDao.findAllDept();
+		DeptDAO deptDAO = new DeptDAO();
+		List<Dept> deptAllList = deptDAO.findAllDept();
 		session.setAttribute("deptAllList", deptAllList);
 		if (deptAllList == null) {
 			request.setAttribute("message", "部署の登録データがありません。");

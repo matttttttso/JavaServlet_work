@@ -16,6 +16,7 @@
 		<input type="hidden" name="action" value="action.DeptUpdateLogic" />
 		<input type="submit" value="設定">
 	</form>
-	<button onclick="history.back()">キャンセル</button>
+	<br>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>

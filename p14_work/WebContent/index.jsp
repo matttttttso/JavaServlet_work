@@ -9,16 +9,15 @@
 <title>トップページ</title>
 </head>
 <body>
-	<h2>一覧へ（テスト）</h2>
+	<h2>メニュー</h2>
 	<form action="./EmployeeDatabase" method="post">
-		<input type="hidden" name="action" value="action.EmployeeListLogic" />
+		<input type="hidden" name="action" value="action.EmpListLogic" />
 		<input type="submit" value="社員一覧">
 	</form>
-		<form action="./EmployeeDatabase" method="post">
+	<br>
+	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="action.DeptListLogic" />
 		<input type="submit" value="部署一覧">
 	</form>
-	<br>
-	<button onclick="history.back()">キャンセル</button>
 </body>
 </html>
