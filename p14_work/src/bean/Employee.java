@@ -9,7 +9,7 @@ public class Employee implements Serializable {
 	private String empName; //名前
 	private int age; //年齢
 	private Gender gender; //性別
-	private int imageID;
+	private int pictID;
 	private String zipcode;
 	private Prefecture pref; //都道府県
 	private String address;
@@ -20,14 +20,14 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public Employee(int empID, String empName, int age, Gender gender, int imageID,
+	public Employee(int empID, String empName, int age, Gender gender, int pictID,
 			String zipcode, Prefecture pref, String address, int deptID,
 			String dateEntering, String dateRetired) {
 		this.empID = empID;
 		this.empName = empName;
 		this.age = age;
 		this.gender = gender;
-		this.imageID = imageID;
+		this.pictID = pictID;
 		this.zipcode = zipcode;
 		this.pref = pref;
 		this.address = address;
@@ -48,8 +48,8 @@ public class Employee implements Serializable {
 	public Gender getGender() {return gender;}
 	public void setGender(Gender gender) {this.gender = gender;}
 
-	public int getImageID() {return imageID;}
-	public void setImageID(int imageID) {this.imageID = imageID;}
+	public int getPictID() {return pictID;}
+	public void setPictID(int pictID) {this.pictID = pictID;}
 
 	public String getZipcode() {return zipcode;}
 	public void setZipcode(String zipcode) {this.zipcode = zipcode;}
