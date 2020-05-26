@@ -12,11 +12,11 @@
 <body>
 	<h2>部署データを新規作成します</h2>
 	<form action="./EmployeeDatabase" method="post">
-		<input type="hidden" name="deptID" value="${ fn:length(deptAllList) + 1 }">
+		<p>部署ID：<input type="text" name="deptID">
 		<p>部署名：<input type="text" name="deptName"></p>
 		<input type="hidden" name="action" value="action.DeptAddLogic" />
 		<input type="submit" value="設定">
 	</form>
-	<button onclick="history.back()">キャンセル</button>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>

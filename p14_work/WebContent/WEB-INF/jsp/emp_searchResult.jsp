@@ -19,23 +19,21 @@
 				<tr>
 					<th>ID</th>
 					<th>名前</th>
-					<th>部署</th>
 				</tr>
 				<c:forEach var="employee" items="${ searchedEmpList }">
 					<tr>
-						<td><c:out value="${ employee.employeeID }" /></td>
-						<td><c:out value="${ employee.name }" /></td>
-						<td><c:out value="${ employee.dept }" /></td>
+						<td><c:out value="${ employee.empID }" /></td>
+						<td><c:out value="${ employee.empName }" /></td>
 						<td>
 							<form action="./EmployeeDatabase" method="post">
-								<input type="hidden" name="action" value="action.EmployeeEditLogic" />
-								<input type="hidden" name="empID" value="${ employee.employeeID }">
+								<input type="hidden" name="action" value="action.EmpEditLogic" />
+								<input type="hidden" name="empID" value="${ employee.empID }">
 								<input type="submit" value="編集">
 							</form>
 						</td>
 						<td>
 							<form action="#" method="post">
-								<input type="hidden" name="empID" value="${ employee.employeeID }">
+								<input type="hidden" name="empID" value="${ employee.empID }">
 								<input type="submit" value="削除">
 							</form>
 						</td>
@@ -51,5 +49,7 @@
 			</form>
 		</c:when>
 	</c:choose>
+	<br>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>

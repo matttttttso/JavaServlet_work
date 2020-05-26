@@ -1,40 +1,46 @@
 package bean;
 
-import java.awt.Image;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int employeeID; //社員番号
-	private String name; //名前
+	private int empID; //社員番号
+	private String empName; //名前
 	private int age; //年齢
 	private Gender gender; //性別
-	private Image image;
+	private int imageID;
 	private String zipcode;
 	private Prefecture pref; //都道府県
 	private String address;
-	private Dept dept;
+	private int deptID;
 	private String dateEntering;
 	private String dateRetired;
 
 	public Employee() {
 	}
 
-	public Employee(int id, String name, int age, Gender gender, Prefecture pref, Dept dept) {
-		this.employeeID = id;
-		this.name = name;
+	public Employee(int empID, String empName, int age, Gender gender, int imageID,
+			String zipcode, Prefecture pref, String address, int deptID,
+			String dateEntering, String dateRetired) {
+		this.empID = empID;
+		this.empName = empName;
 		this.age = age;
 		this.gender = gender;
+		this.imageID = imageID;
+		this.zipcode = zipcode;
 		this.pref = pref;
-		this.dept = dept;
+		this.address = address;
+		this.deptID = deptID;
+		this.dateEntering = dateEntering;
+		this.dateRetired = dateRetired;
 	}
 
-	public int getEmployeeID() {return employeeID;}
-	public void setEmployeeID(int employeeID) {this.employeeID = employeeID;}
+	public int getEmpID() {return empID;}
+	public void setEmpID(int empID) {this.empID = empID;}
 
-	public String getName() {return name;}
-	public void setName(String name) {this.name = name;}
+	public String getEmpName() {return empName;}
+	public void setEmpName(String empName) {this.empName = empName;}
 
 	public int getAge() {return age;}
 	public void setAge(int age) {this.age = age;}
@@ -42,8 +48,8 @@ public class Employee implements Serializable {
 	public Gender getGender() {return gender;}
 	public void setGender(Gender gender) {this.gender = gender;}
 
-	public Image getImage() {return image;}
-	public void setImage(Image image) {this.image = image;}
+	public int getImageID() {return imageID;}
+	public void setImageID(int imageID) {this.imageID = imageID;}
 
 	public String getZipcode() {return zipcode;}
 	public void setZipcode(String zipcode) {this.zipcode = zipcode;}
@@ -54,8 +60,8 @@ public class Employee implements Serializable {
 	public String getAddress() {return address;}
 	public void setAddress(String address) {this.address = address;}
 
-	public Dept getDept() {return dept;}
-	public void setDept(Dept dept) {this.dept = dept;}
+	public int getDeptID() {return deptID;}
+	public void setDeptID(int deptID) {this.deptID = deptID;}
 
 	public String getDateEntering() {return dateEntering;}
 	public void setDateEntering(String dateEntering) {this.dateEntering = dateEntering;}

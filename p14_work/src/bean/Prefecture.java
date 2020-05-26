@@ -1,7 +1,7 @@
 package bean;
 
 public enum Prefecture {
-	UNKNOWN	(0, "未指定"),
+	UNKNOWN	(0, ""),
 	HOKKAIDO(1, "北海道"),
 	AOMORI	(2, "青森"),
 	IWATE	(3, "岩手"),

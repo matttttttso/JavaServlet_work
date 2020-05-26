@@ -9,38 +9,37 @@ import javax.servlet.http.HttpSession;
 
 import bean.Employee;
 
-public class EmployeeSearchLogic implements CommonLogic {
+public class EmpSearchLogic implements CommonLogic {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
-
 		@SuppressWarnings("unchecked")
-		List<Employee> empList = (List<Employee>) session.getAttribute("empList");
+		List<Employee> empAllList = (List<Employee>) session.getAttribute("empAllList");
 		final String notext = "指定無し";
-		String searchDept = request.getParameter("searchDept");
+		int searchDeptID = Integer.parseInt(request.getParameter("searchDeptID"));
 		String searchEmpID = request.getParameter("searchEmpID");
 		if (searchEmpID.equals("")) {
 			searchEmpID = notext;
 		}
-		String searchName = request.getParameter("searchName");
-		if (searchName.equals("")) {
-			searchName = notext;
+		String searchEmpName = request.getParameter("searchEmpName");
+		if (searchEmpName.equals("")) {
+			searchEmpName = notext;
 		}
 		List<Employee> searchedEmpList = new ArrayList<Employee>();
 
-		for (Employee emp : empList) {
+		for (Employee emp : empAllList) {
 			boolean matchedSearchDept = true;
-			if(!searchDept.equals("unselected")){
-				matchedSearchDept = emp.getDept().equals(searchDept);
+			if(searchDeptID != 0){
+				matchedSearchDept = emp.getDeptID() == searchDeptID;
 			}
 			if (matchedSearchDept) {
 				boolean matchedEmpID = true;
 				if (!searchEmpID.equals(notext)) {
-					matchedEmpID = String.valueOf(emp.getEmployeeID()).equals(searchEmpID);
+					matchedEmpID = String.valueOf(emp.getEmpID()).equals(searchEmpID);
 				}
 				boolean containsSearchName = true;
-				if (!searchName.equals(notext)) {
-					containsSearchName = emp.getName().contains(searchName);
+				if (!searchEmpName.equals(notext)) {
+					containsSearchName = emp.getEmpName().contains(searchEmpName);
 				}
 				if (matchedEmpID && containsSearchName) {
 					searchedEmpList.add(emp);

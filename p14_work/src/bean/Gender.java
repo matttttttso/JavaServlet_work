@@ -1,8 +1,9 @@
 package bean;
 
 public enum Gender {
-	Female("女"),
-	Male("男");
+	UNKNOWN(""),
+	FEMALE("女"),
+	MALE("男");
 
 	private String text;
 
@@ -11,11 +12,19 @@ public enum Gender {
 		this.text = text;
 	}
 
+	public String getText() {
+		return text;
+	}
+
 	public String toString() {
 		return this.text;
 	}
 
-	public boolean equals(String target) {
-		return true;
+	public static Gender getByText(String text) {
+		for (Gender g : Gender.values()) {
+			if (g.getText().equals(text))
+				return g;
+		}
+		return null;
 	}
 }

@@ -13,5 +13,7 @@
 		<p>メッセージなし</p>
 	</c:if>
 	<p>${ errorMessage }</p>
+	<br>
+	<button onclick="history.back()">戻る</button>
 </body>
 </html>
