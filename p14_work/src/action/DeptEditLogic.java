@@ -18,8 +18,6 @@ public class DeptEditLogic implements CommonLogic {
 		for(Dept dept : deptAllList) {
 			if(dept.getDeptID() == deptID) {
 				request.setAttribute("deptEdited", dept);
-				request.setAttribute("message", "見つかりました");
-				request.setAttribute("deptID", dept.getDeptID());
 			}
 		}
 		return "dept_edit.jsp";
