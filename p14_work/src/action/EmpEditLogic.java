@@ -19,8 +19,6 @@ public class EmpEditLogic implements CommonLogic {
 		for(Employee emp : empAllList) {
 			if(emp.getEmpID() == empID) {
 				request.setAttribute("empEdited", emp);
-				request.setAttribute("message", "見つかりました");
-				request.setAttribute("empID", emp.getEmpID());
 			}
 		}
 		return "emp_edit.jsp";
