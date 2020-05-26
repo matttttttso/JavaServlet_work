@@ -16,14 +16,14 @@ public class EmpSearchLogic implements CommonLogic {
 		@SuppressWarnings("unchecked")
 		List<Employee> empAllList = (List<Employee>) session.getAttribute("empAllList");
 		final String notext = "指定無し";
-		int searchDeptID = Integer.parseInt(request.getParameter("searchDept"));
+		int searchDeptID = Integer.parseInt(request.getParameter("searchDeptID"));
 		String searchEmpID = request.getParameter("searchEmpID");
 		if (searchEmpID.equals("")) {
 			searchEmpID = notext;
 		}
-		String searchName = request.getParameter("searchName");
-		if (searchName.equals("")) {
-			searchName = notext;
+		String searchEmpName = request.getParameter("searchEmpName");
+		if (searchEmpName.equals("")) {
+			searchEmpName = notext;
 		}
 		List<Employee> searchedEmpList = new ArrayList<Employee>();
 
@@ -38,8 +38,8 @@ public class EmpSearchLogic implements CommonLogic {
 					matchedEmpID = String.valueOf(emp.getEmpID()).equals(searchEmpID);
 				}
 				boolean containsSearchName = true;
-				if (!searchName.equals(notext)) {
-					containsSearchName = emp.getEmpName().contains(searchName);
+				if (!searchEmpName.equals(notext)) {
+					containsSearchName = emp.getEmpName().contains(searchEmpName);
 				}
 				if (matchedEmpID && containsSearchName) {
 					searchedEmpList.add(emp);
