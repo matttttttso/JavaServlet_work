@@ -93,7 +93,7 @@ public class ImageDAO {
 		return true;
 	}
 
-	public boolean deleteDept(String deptID) {
+	public boolean deleteImage(int pictID) {
 		try {
 			Class.forName(DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
@@ -101,8 +101,8 @@ public class ImageDAO {
 		}
 		try (
 				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
-				PreparedStatement pstmt = conn.prepareStatement("DELETE FROM DEPT WHERE DEPT_ID IS ?");) {
-			pstmt.setString(1, deptID);
+				PreparedStatement pstmt = conn.prepareStatement("DELETE FROM PICTURE WHERE pict_id IS ?");) {
+			pstmt.setInt(1, pictID);
 			int result = pstmt.executeUpdate();
 			if (result != 1) {
 				return false;
