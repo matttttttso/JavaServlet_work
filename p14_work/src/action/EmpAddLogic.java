@@ -8,40 +8,23 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import bean.Picture;
 import dao.EmployeeDAO;
 import dao.ImageDAO;
 
 public class EmpAddLogic implements CommonLogic {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		String f = request.getParameter("picture");
-		@SuppressWarnings("unchecked")
-		List<Picture> imageAllList = (List<Picture>) session.getAttribute("imageAllList");
-		int pictID = imageAllList.size() + 1;
-		InputStream is = null;
-		try {
-			is = new FileInputStream(f);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		ImageDAO imageDAO = new ImageDAO();
-		if (imageDAO.addImage(pictID, is) == false) {
-			request.setAttribute("errotMessage", "データベースへの登録に失敗しました。（画像データ）");
-			return "error.jsp";
-		}
-
 		boolean empIDisNull = request.getParameter("empID").equals("");
 		boolean empNameisNull = request.getParameter("empName").equals("");
 		if (empIDisNull || empNameisNull) {
-			request.setAttribute("errotMessage", "IDと名前は必須です。");
+			request.setAttribute("errorMessage", "IDと名前は必須です。");
 			return "error.jsp";
 		}
+		String empIDstr = request.getParameter("empID");
+		int pictID = Integer.parseInt(empIDstr);
 		List<String> empParams = new ArrayList<String>();
-		empParams.add(request.getParameter("empID"));
+		empParams.add(empIDstr);
 		empParams.add(request.getParameter("empName"));
 		empParams.add(request.getParameter("age"));
 		empParams.add(request.getParameter("gender"));
@@ -54,9 +37,22 @@ public class EmpAddLogic implements CommonLogic {
 		empParams.add(request.getParameter("dateRetired"));
 		EmployeeDAO empDao = new EmployeeDAO();
 		if (empDao.addEmp(empParams) == false) {
-			request.setAttribute("errotMessage", "データベースへの登録に失敗しました。");
+			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。");
 			return "error.jsp";
 		}
+		String f = request.getParameter("picture");
+		InputStream is = null;
+		try {
+			is = new FileInputStream(f);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		ImageDAO imageDAO = new ImageDAO();
+		if (imageDAO.addImage(pictID, is) == false) {
+			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データ）");
+			return "error.jsp";
+		}
+
 		request.setAttribute("message", "データベースへの登録に成功しました。");
 		return "success.jsp";
 	}
