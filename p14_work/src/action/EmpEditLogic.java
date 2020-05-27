@@ -16,7 +16,7 @@ public class EmpEditLogic implements CommonLogic {
 		@SuppressWarnings("unchecked")
 		List<Employee> empAllList = (List<Employee>) session.getAttribute("empAllList");
 		int empID = Integer.parseInt(request.getParameter("empID"));
-
+		String pictureSTR = null;
 		for(Employee emp : empAllList) {
 			if(emp.getEmpID() == empID) {
 				request.setAttribute("empEdited", emp);
@@ -24,12 +24,18 @@ public class EmpEditLogic implements CommonLogic {
 				if(pictID != 0) {
 					@SuppressWarnings("unchecked")
 					List<Picture> imageAllList = (List<Picture>) session.getAttribute("imageAllList");
-					Picture picture = imageAllList.get(pictID - 1);
-					String pictureSTR = picture.getPictImage();
-					request.setAttribute("pictureSTR", pictureSTR);
+					Picture picture = null;
+					for(Picture tmp : imageAllList) {
+						if(tmp.getPictID() == pictID) {
+							picture = tmp;
+							pictureSTR = picture.getPictImage();
+							break;
+						}
+					}
 				}
 			}
 		}
+		request.setAttribute("pictureSTR", pictureSTR);
 		return "emp_edit.jsp";
 	}
 }
