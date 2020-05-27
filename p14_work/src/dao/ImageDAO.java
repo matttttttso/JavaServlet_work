@@ -54,7 +54,8 @@ public class ImageDAO {
 		}
 		try (
 				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
-				PreparedStatement pstmt = conn.prepareStatement("UPDATE PICTURE SET pict_image = ? WHERE pict_id = ?");) {
+				PreparedStatement pstmt = conn.prepareStatement("UPDATE PICTURE SET pict_image = ? WHERE pict_id = ?");
+			) {
 			pstmt.setBlob(1, is);
 			pstmt.setInt(2, pictID);
 			int result = pstmt.executeUpdate();
