@@ -32,15 +32,15 @@ public class CreateEmpsCSVLogic implements CommonLogic {
 			for(Employee emp : empAllList) {
 				outputResult.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s%n",
 						emp.getEmpID(), emp.getEmpName(), emp.getAge(), emp.getGender().toString(),
-						emp.getImageID(), emp.getZipcode(), emp.getPref().getFullText(), emp.getAddress(), emp.getDeptID(), emp.getDateEntering(),
+						emp.getPictID(), emp.getZipcode(), emp.getPref().getFullText(), emp.getAddress(), emp.getDeptID(), emp.getDateEntering(),
 						emp.getDateRetired()));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			request.setAttribute("errotMessage", "CSVファイルの作成に失敗しました。");
+			request.setAttribute("errorMessage", "CSVファイルの作成に失敗しました。");
 			return "error.jsp";
 		}
-		request.setAttribute("message", "CSVファイルの作成に成功しました。");
+		request.setAttribute("message", "社員リストのCSVファイルをデスクトップに作成しました。");
 		return "success.jsp";
 	}
 }

@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import bean.Dept;
 import bean.Employee;
+import bean.Picture;
 import dao.DeptDAO;
 import dao.EmployeeDAO;
+import dao.ImageDAO;
 
 public class EmpListLogic implements CommonLogic {
 	@Override
@@ -27,6 +29,13 @@ public class EmpListLogic implements CommonLogic {
 		if (deptAllList == null) {
 			request.setAttribute("message", "部署の登録データがありません。");
 		}
+		ImageDAO imageDAO = new ImageDAO();
+		List<Picture> imageAllList = imageDAO.findAllImage();
+		session.setAttribute("imageAllList", imageAllList);
+		if (imageAllList == null) {
+			request.setAttribute("message", "画像の登録データがありません。");
+		}
+
 		return "emp_list.jsp";
 	}
 }

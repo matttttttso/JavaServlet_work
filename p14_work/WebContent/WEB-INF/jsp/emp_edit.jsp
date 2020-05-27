@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="bean.Gender"%>
 <%@ page import="bean.Prefecture"%>
+<%@ page import="bean.Picture"%>
+<%@ page import="bean.Employee"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +23,10 @@
 			<input type="radio" name="gender" value="${ Gender.MALE.text }" <c:if test="${ empEdited.gender == 'MALE' }">checked</c:if>>男性
 			<input type="radio" name="gender" value="${ Gender.FEMALE.text }" <c:if test="${ empEdited.gender == 'FEMALE' }">checked</c:if>>女性
 		</p>
-		<p>写真：<input type="file" name="image" value="${ empEdited.imageID }"></p>
+		<p>写真：<input type="file" name="picture"></p>
+		<input type="hidden" name="pictID" value="${ empEdited.pictID }">
+		<input type="hidden" name="pictureSTR" value="${ pictureSTR }">
+		<img style="width: 200px; height: 200px" src="data:image/png;base64,${ pictureSTR }">
 		<p>郵便番号：<input type="text" name="zipcode" value="${ empEdited.zipcode }"></p>
 		<p>都道府県：
 			<select name="prefecture">

@@ -12,7 +12,7 @@ public class DeptUpdateLogic implements CommonLogic {
 		String deptName = request.getParameter("deptName");
 		DeptDAO deptDao = new DeptDAO();
 		if (deptDao.updateDept(deptID, deptName) == false) {
-			request.setAttribute("errotMessage", "データベースへの登録に失敗しました。");
+			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。");
 			return "error.jsp";
 		}
 		request.setAttribute("message", "データベースへの登録に成功しました。");

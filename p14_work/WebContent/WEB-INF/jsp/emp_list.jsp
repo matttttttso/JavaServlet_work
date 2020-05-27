@@ -9,9 +9,7 @@
 </head>
 <body>
 	<h3>社員一覧：</h3>
-	<c:if test="${empty message}">
-		<p>メッセージなし</p>
-	</c:if>
+	<p>${ message }</p>
 	<table border="1">
 		<tr>
 			<th>ID</th>
@@ -38,14 +36,17 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
 	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="action.EmpNewLogic" />
 		<input type="submit" value="新規追加">
 	</form>
+	<br>
 	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="search" />
 		<input type="submit" value="検索...">
 	</form>
+	<br>
 	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="action.CreateEmpsCSVLogic" />
 		<input type="submit" value="SCVファイルに出力">

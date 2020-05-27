@@ -20,7 +20,7 @@
 			<input type="radio" name="gender" value="${ Gender.MALE.text }">男性
 			<input type="radio" name="gender" value="${ Gender.FEMALE.text }">女性
 		</p>
-		<p>写真：<input type="file" name="image"></p>
+		<p>写真：<input type="file" name="picture" accept="image/png,image/jpeg"></p>
 		<p>郵便番号：<input type="text" name="zipcode"></p>
 		<p>都道府県：
 			<select name="prefecture">
@@ -37,8 +37,8 @@
 				</c:forEach>
 			</select>
 		</p>
-		<p>入社日：<input type="text" name="dateEntering"></p>
-		<p>退社日：<input type="text" name="dateRetired"></p>
+		<p>入社日：<input type="date" name="dateEntering"></p>
+		<p>退社日：<input type="date" name="dateRetired"></p>
 		<input type="hidden" name="action" value="action.EmpAddLogic" />
 		<input type="submit" value="設定">
 	</form>
