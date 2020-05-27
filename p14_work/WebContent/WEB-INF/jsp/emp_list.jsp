@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h3>社員一覧：</h3>
+	<p>${ message }"></p>
 	<table border="1">
 		<tr>
 			<th>ID</th>
