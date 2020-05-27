@@ -25,6 +25,7 @@
 		</p>
 		<p>写真：<input type="file" name="picture"></p>
 		<input type="hidden" name="pictID" value="${ empEdited.pictID }">
+		<input type="hidden" name="pictureSTR" value="${ pictureSTR }">
 		<img style="width: 200px; height: 200px" src="data:image/png;base64,${ pictureSTR }">
 		<p>郵便番号：<input type="text" name="zipcode" value="${ empEdited.zipcode }"></p>
 		<p>都道府県：

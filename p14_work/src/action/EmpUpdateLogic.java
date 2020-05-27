@@ -42,23 +42,25 @@ public class EmpUpdateLogic implements CommonLogic {
 		}
 
 		String f = request.getParameter("picture");
-		InputStream is = null;
-		try {
-			is = new FileInputStream(f);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		ImageDAO imageDAO = new ImageDAO();
 		String pictureSTR = request.getParameter("pictureSTR");
-		if(pictureSTR == null) {
-			if (imageDAO.addImage(pictID, is) == false) {
-				request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データadd）");
-				return "error.jsp";
+		InputStream is = null;
+		if(!f.equals("")) {
+			try {
+				is = new FileInputStream(f);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
 			}
-		} else {
-			if (imageDAO.updateImage(pictID, is) == false) {
-				request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データupdate）");
-				return "error.jsp";
+			ImageDAO imageDAO = new ImageDAO();
+			if(pictureSTR == null) {
+				if (imageDAO.addImage(pictID, is) == false) {
+					request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データadd）");
+					return "error.jsp";
+				}
+			} else {
+				if (imageDAO.updateImage(pictID, is) == false) {
+					request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データupdate）");
+					return "error.jsp";
+				}
 			}
 		}
 
