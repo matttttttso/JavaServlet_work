@@ -9,9 +9,6 @@
 </head>
 <body>
 	<h3>社員一覧：</h3>
-	<c:if test="${empty message}">
-		<p>メッセージなし</p>
-	</c:if>
 	<table border="1">
 		<tr>
 			<th>ID</th>
