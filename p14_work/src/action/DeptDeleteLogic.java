@@ -11,7 +11,7 @@ public class DeptDeleteLogic implements CommonLogic {
 		String deptID = request.getParameter("deptID");
 		DeptDAO deptDao = new DeptDAO();
 		if (deptDao.deleteDept(deptID) == false) {
-			request.setAttribute("errotMessage", "レコードの削除に失敗しました。");
+			request.setAttribute("errorMessage", "レコードの削除に失敗しました。");
 			return "error.jsp";
 		}
 		request.setAttribute("message", "レコードの削除に成功しました。");

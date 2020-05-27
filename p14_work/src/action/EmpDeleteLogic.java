@@ -11,7 +11,7 @@ public class EmpDeleteLogic implements CommonLogic {
 		String empID = request.getParameter("empID");
 		EmployeeDAO empDao = new EmployeeDAO();
 		if (empDao.deleteEmp(empID) == false) {
-			request.setAttribute("errotMessage", "レコードの削除に失敗しました。");
+			request.setAttribute("errorMessage", "レコードの削除に失敗しました。");
 			return "error.jsp";
 		}
 		request.setAttribute("message", "レコードの削除に成功しました。");
