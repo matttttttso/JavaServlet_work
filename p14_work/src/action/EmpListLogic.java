@@ -33,7 +33,7 @@ public class EmpListLogic implements CommonLogic {
 		List<Picture> imageAllList = imageDAO.findAllImage();
 		session.setAttribute("imageAllList", imageAllList);
 		if (imageAllList == null) {
-			request.setAttribute("message", "部署の登録データがありません。");
+			request.setAttribute("message", "画像の登録データがありませｎ。");
 		}
 
 		return "emp_list.jsp";
