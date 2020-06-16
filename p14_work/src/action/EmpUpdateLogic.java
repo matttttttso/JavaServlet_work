@@ -41,17 +41,17 @@ public class EmpUpdateLogic implements CommonLogic {
 			return "error.jsp";
 		}
 
-		String f = request.getParameter("picture");
+		String pict = request.getParameter("picture");
 		String pictureSTR = request.getParameter("pictureSTR");
 		InputStream is = null;
-		if(!f.equals("")) {
+		if(!pict.equals("")) {
 			try {
-				is = new FileInputStream(f);
+				is = new FileInputStream(pict);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 			ImageDAO imageDAO = new ImageDAO();
-			if(pictureSTR == null) {
+			if(pictureSTR == null || pictureSTR.equals("")) {
 				if (imageDAO.addImage(pictID, is) == false) {
 					request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データadd）");
 					return "error.jsp";
