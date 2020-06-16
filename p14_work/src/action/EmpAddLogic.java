@@ -22,7 +22,7 @@ public class EmpAddLogic implements CommonLogic {
 			return "error.jsp";
 		}
 		String empIDstr = request.getParameter("empID");
-		int pictID = Integer.parseInt(empIDstr);
+		int pictID = Integer.parseInt(empIDstr);	//画像IDと社員IDを同じとする
 		List<String> empParams = new ArrayList<String>();
 		empParams.add(empIDstr);
 		empParams.add(request.getParameter("empName"));
@@ -40,19 +40,20 @@ public class EmpAddLogic implements CommonLogic {
 			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。");
 			return "error.jsp";
 		}
-		String f = request.getParameter("picture");
-		InputStream is = null;
-		try {
-			is = new FileInputStream(f);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		String pict = request.getParameter("picture");
+		if(!pict.equals("")) {
+			InputStream is = null;
+			try {
+				is = new FileInputStream(pict);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			ImageDAO imageDAO = new ImageDAO();
+			if (imageDAO.addImage(pictID, is) == false) {
+				request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データ）");
+				return "error.jsp";
+			}
 		}
-		ImageDAO imageDAO = new ImageDAO();
-		if (imageDAO.addImage(pictID, is) == false) {
-			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データ）");
-			return "error.jsp";
-		}
-
 		request.setAttribute("message", "データベースへの登録に成功しました。");
 		return "success.jsp";
 	}
