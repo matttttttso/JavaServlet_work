@@ -31,8 +31,8 @@ public class CreateEmpsCSVLogic implements CommonLogic {
 			outputResult.write(String.format("%n"));
 			for(Employee emp : empAllList) {
 				outputResult.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s%n",
-						emp.getEmpID(), emp.getEmpName(), emp.getAge(), emp.getGender().toString(),
-						emp.getPictID(), emp.getZipcode(), emp.getPref().getFullText(), emp.getAddress(), emp.getDeptID(), emp.getDateEntering(),
+						emp.getEmpID(), emp.getEmpName(), emp.getAge(), emp.getGender().toString(), emp.getPictID(),
+						emp.getZipcode(), emp.getPref().getFullText(), emp.getAddress(), emp.getDeptID(), emp.getDateEntering(),
 						emp.getDateRetired()));
 			}
 		} catch (IOException e) {
