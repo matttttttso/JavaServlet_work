@@ -46,7 +46,9 @@ public class EmployeeDatabaseServlet extends HttpServlet {
 				next = next + "error.jsp";
 			}
 		}
-		request.getRequestDispatcher(next).forward(request, response);
+		if (!action.equals("action.CreateEmpsCSVLogic")) {
+			request.getRequestDispatcher(next).forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
