@@ -49,7 +49,7 @@
 	<br>
 	<form action="./EmployeeDatabase" method="post">
 		<input type="hidden" name="action" value="action.CreateEmpsCSVLogic" />
-		<input type="submit" value="SCVファイルに出力">
+		<input type="submit" value="CSVファイルに出力">
 	</form>
 	<br>
 	<button onclick="history.back()">戻る</button>
