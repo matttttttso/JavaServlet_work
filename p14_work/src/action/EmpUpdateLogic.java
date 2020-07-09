@@ -1,13 +1,15 @@
 package action;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.EmployeeDAO;
 import dao.ImageDAO;
@@ -64,22 +66,34 @@ public class EmpUpdateLogic implements CommonLogic {
 			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。(EMP)");
 			return "error.jsp";
 		}
-
-		String pict = request.getParameter("picture");
+		Part pict = null;
+		try {
+			pict = request.getPart("picture");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ServletException e1) {
+			e1.printStackTrace();
+		}
 		String pictureSTR = request.getParameter("pictureSTR");
 		InputStream is = null;
-		if(!pict.equals("")) {
+		if(pict != null || !pict.equals("")) {
 			try {
-				is = new FileInputStream(pict);
+				is = pict.getInputStream();
 			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			ImageDAO imageDAO = new ImageDAO();
-			if(pictureSTR == null || pictureSTR.equals("")) {
+			if(pictureSTR == null) {
 				if (imageDAO.addImage(pictID, is) == false) {
 					request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データadd）");
 					return "error.jsp";
 				}
+			} else if(!pictureSTR.equals("")) {
+				//何もしない
 			} else {
 				if (imageDAO.updateImage(pictID, is) == false) {
 					request.setAttribute("errorMessage", "データベースへの登録に失敗しました。（画像データupdate）");

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h2>社員データを新規作成します</h2>
-	<form action="./EmployeeDatabase" method="post">
+	<form action="./EmployeeDatabase" method="post" enctype="multipart/form-data">
 		<p>社員ID：<input type="text" name="empID" placeholder="1~99999"></p>
 		<p>名前：<input type="text" name="empName" placeholder="名字 名前"></p>
 		<p>年齢：<input type="text" name="age" placeholder="00"></p>
