@@ -8,23 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Constants;
 import bean.Dept;
 
 public class DeptDAO {
-	private final String DRIVER_NAME = "org.h2.Driver";
-	private final String JDBC_URL = "jdbc:h2:~/servletWork";
-	private final String DB_USER = "sa";
-	private final String DB_PASS = "";
-
 	public List<Dept> findAllDept() {
 		List<Dept> deptList = new ArrayList<Dept>();
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("SELECT dept_id,dept_name FROM dept ORDER BY dept_id");
 				ResultSet rs = pstmt.executeQuery();
 			) {
@@ -43,12 +39,12 @@ public class DeptDAO {
 
 	public boolean updateDept(String deptID, String deptName) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("UPDATE DEPT SET DEPT_NAME = ? WHERE DEPT_ID = ?");
 			) {
 			pstmt.setString(1, deptName);
@@ -66,12 +62,12 @@ public class DeptDAO {
 
 	public boolean addDept(String deptID, String deptName) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("INSERT INTO DEPT (dept_id,dept_name) VALUES (?,?)");
 			) {
 			pstmt.setString(1, deptID);
@@ -89,12 +85,12 @@ public class DeptDAO {
 
 	public boolean deleteDept(String deptID) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("DELETE FROM DEPT WHERE DEPT_ID IS ?");
 			) {
 			pstmt.setString(1, deptID);

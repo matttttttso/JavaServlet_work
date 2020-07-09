@@ -1,13 +1,15 @@
 package action;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.EmployeeDAO;
 import dao.ImageDAO;
@@ -46,7 +48,7 @@ public class EmpAddLogic implements CommonLogic {
 			request.setAttribute("errorMessage", "退社日はハイフンで区切った年月日で入力してください。<br>例：2001-01-01<br>(空欄も可)");
 			return "error.jsp";
 		}
-		int pictID = Integer.parseInt(empIDstr);	//画像IDと社員IDを同じとする
+		int pictID = Integer.parseInt(empIDstr); //画像IDと社員IDを同じとする
 		List<String> empParams = new ArrayList<String>();
 		empParams.add(empIDstr);
 		empParams.add(request.getParameter("empName"));
@@ -64,12 +66,23 @@ public class EmpAddLogic implements CommonLogic {
 			request.setAttribute("errorMessage", "データベースへの登録に失敗しました。");
 			return "error.jsp";
 		}
-		String pict = request.getParameter("picture");
-		if(!pict.equals("")) {
-			InputStream is = null;
+		Part pict = null;
+		try {
+			pict = request.getPart("picture");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ServletException e1) {
+			e1.printStackTrace();
+		}
+		InputStream is = null;
+		if (pict != null) {
 			try {
-				is = new FileInputStream(pict);
+				is = pict.getInputStream();
 			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			ImageDAO imageDAO = new ImageDAO();
