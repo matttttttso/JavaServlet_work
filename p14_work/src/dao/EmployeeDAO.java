@@ -8,20 +8,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Constants;
 import bean.Employee;
 import bean.Gender;
 import bean.Prefecture;
 
 public class EmployeeDAO {
-	private final String DRIVER_NAME = "org.h2.Driver";
-	private final String JDBC_URL = "jdbc:h2:~/servletWork";
-	private final String DB_USER = "sa";
-	private final String DB_PASS = "";
-
 	public List<Employee> findAllEmp() {
 		List<Employee> empAllList = new ArrayList<Employee>();
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -29,7 +25,7 @@ public class EmployeeDAO {
 				+ "zipcode,prefecture,address,dept_id,date_entering,"
 				+ "date_retired FROM employee ORDER BY emp_id";
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 			) {
@@ -66,7 +62,7 @@ public class EmployeeDAO {
 
 	public boolean updateEmp(List<String> empParams) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -78,7 +74,7 @@ public class EmployeeDAO {
 				+ "?,?,?,?,?,"
 				+ ") WHERE EMP_iD = ?";
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 			) {
 			for(int i = 0; i < empParams.size(); i++) {
@@ -97,7 +93,7 @@ public class EmployeeDAO {
 
 	public boolean addEmp(List<String> empParams) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -110,7 +106,7 @@ public class EmployeeDAO {
 				+ "?,?,?,?,?,"
 				+ "?)";
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 			) {
 			for(int i = 0; i < empParams.size(); i++) {
@@ -129,12 +125,12 @@ public class EmployeeDAO {
 
 	public boolean deleteEmp(String empID) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EMPLOYEE WHERE EMP_ID IS ?");
 			) {
 			pstmt.setString(1, empID);

@@ -11,23 +11,19 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import bean.Constants;
 import bean.Picture;
 
 public class ImageDAO {
-	private final String DRIVER_NAME = "org.h2.Driver";
-	private final String JDBC_URL = "jdbc:h2:~/servletWork";
-	private final String DB_USER = "sa";
-	private final String DB_PASS = "";
-
 	public List<Picture> findAllImage() {
 		List<Picture> pictureAllList = new ArrayList<Picture>();
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("SELECT pict_id,pict_image FROM PICTURE ORDER BY pict_id");
 				ResultSet rs = pstmt.executeQuery();
 			) {
@@ -48,12 +44,12 @@ public class ImageDAO {
 
 	public boolean updateImage(int pictID, InputStream is) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("UPDATE PICTURE SET pict_image = ? WHERE pict_id = ?");
 			) {
 			pstmt.setBlob(1, is);
@@ -71,13 +67,13 @@ public class ImageDAO {
 
 	public boolean addImage(int pictID, InputStream is) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn
 						.prepareStatement("INSERT INTO PICTURE (pict_id,pict_image) VALUES (?,?)");) {
 			pstmt.setInt(1, pictID);
@@ -95,12 +91,12 @@ public class ImageDAO {
 
 	public boolean deleteImage(int pictID) {
 		try {
-			Class.forName(DRIVER_NAME);
+			Class.forName(Constants.DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try (
-				Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+				Connection conn = DriverManager.getConnection(Constants.JDBC_URL, Constants.DB_USER, Constants.DB_PASS);
 				PreparedStatement pstmt = conn.prepareStatement("DELETE FROM PICTURE WHERE pict_id IS ?");) {
 			pstmt.setInt(1, pictID);
 			int result = pstmt.executeUpdate();
